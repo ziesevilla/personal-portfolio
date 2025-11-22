@@ -18,6 +18,15 @@ body.dark-theme {
   --accent-color: #61dafb;
 }
 
+.card, .bg-light, .bg-white {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+}
+
+.text-dark, .text-secondary {
+    color: var(--text-color) !important;
+}
+
 
 
 /* Reset basic margin and padding */

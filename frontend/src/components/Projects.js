@@ -1,51 +1,40 @@
-// src/components/Projects.js
+// src/components/Projects.js (Refactored)
 
 import React from 'react';
-import '../styles/Projects.css'; 
-
-// Define data for your projects
-const projectData = [
-  {
-    id: 1,
-    title: "E-commerce Platform",
-    description: "A fully functional e-commerce site built with MERN stack. Features user authentication, cart management, and payment integration.",
-    tech: ["React", "Node.js", "Express", "MongoDB", "Stripe"],
-    liveLink: "#",
-    repoLink: "#"
-  },
-  {
-    id: 2,
-    title: "Task Manager App",
-    description: "A simple to-do application using React Hooks and local storage for state management.",
-    tech: ["React", "JavaScript", "HTML5", "CSS3"],
-    liveLink: "#",
-    repoLink: "#"
-  }
-];
+import projectData from '../data/projectData';
 
 const Projects = () => {
   return (
-    // id="projects" allows the Header link to navigate here
-    <section id="projects" className="projects-section">
-      <h2>My Work</h2>
-      <p className="section-subtitle">Check out some of the projects I've built.</p>
-      <div className="projects-grid">
+    <section id="projects" className="projects-section container py-5">
+      <h2 className="text-center display-4 mb-2">My Work</h2>
+      <p className="text-center text-muted mb-5">Check out some of the projects I've built.</p>
+      
+      {/* Use Bootstrap's row and column structure */}
+      <div className="row g-4"> 
         {projectData.map(project => (
-          <div key={project.id} className="project-card">
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <div className="tech-stack">
-              {project.tech.map(t => (
-                <span key={t} className="tech-tag">{t}</span>
-              ))}
-            </div>
-            <div className="project-links">
-              <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                View Live
-              </a>
-              <a href={project.repoLink} target="_blank" rel="noopener noreferrer">
-                GitHub Repo
-              </a>
+          // Define responsive column width: 12 units on small screens, 6 on medium, 4 on large
+          <div key={project.id} className="col-12 col-md-6 col-lg-4"> 
+            {/* Use card component */}
+            <div className="card h-100 shadow-sm border-0"> 
+              <div className="card-body">
+                <h3 className="card-title text-primary">{project.title}</h3>
+                <p className="card-text">{project.description}</p>
+                
+                <div className="tech-stack mb-3">
+                  {project.tech.map(t => (
+                    // Use Bootstrap badge utility
+                    <span key={t} className="badge bg-info text-dark me-2">{t}</span> 
+                  ))}
+                </div>
+              </div>
+              <div className="card-footer bg-white border-0">
+                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="card-link fw-bold">
+                  View Live
+                </a>
+                <a href={project.repoLink} target="_blank" rel="noopener noreferrer" className="card-link">
+                  GitHub Repo
+                </a>
+              </div>
             </div>
           </div>
         ))}
