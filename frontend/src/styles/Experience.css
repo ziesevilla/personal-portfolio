@@ -1,0 +1,47 @@
+/* src/styles/Experience.css */
+
+.experience-section {
+  padding: 80px 20px;
+  /* Use theme variables for main section colors */
+  background-color: var(--card-bg); /* Use card background for this section for visual separation */
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Ensure the main cards adapt */
+.experience-section .card {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color);
+  border: none; /* Let the shadow define the boundary */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Adjust text colors within the card */
+.experience-section .card-title,
+.experience-section .card-subtitle {
+  color: var(--text-color) !important;
+}
+
+/* Style the List Group (bullet points) */
+.experience-section .list-group {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Style individual list items */
+.experience-section .list-group-item {
+  /* Ensure list items also use the card background */
+  background-color: var(--card-bg) !important;
+  color: var(--text-color);
+  border-color: rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Dark Mode specific overrides for borders/shadows */
+body.dark-theme .experience-section .card {
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05); /* Lighter shadow for dark mode */
+}
+
+body.dark-theme .experience-section .list-group-item {
+  border-color: rgba(255, 255, 255, 0.1); /* Lighter borders for dark mode */
+}

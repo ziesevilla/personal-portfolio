@@ -1,0 +1,50 @@
+/* src/styles/Certificates.css */
+
+.certificates-section {
+  padding: 80px 20px;
+  /* Use theme variables for background and text */
+  background-color: var(--background-color); 
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Ensure the cards adapt to the theme */
+.certificates-section .card {
+  /* Override Bootstrap's card background */
+  background-color: var(--card-bg) !important; 
+  color: var(--text-color);
+  border: 1px solid var(--accent-color) !important; /* Emphasize border */
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.certificates-section .card:hover {
+  /* Subtle lift effect on hover */
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Adjust card footer for theme */
+.certificates-section .card-footer {
+  /* Light background for contrast, using variable */
+  background-color: var(--card-bg) !important; 
+}
+
+/* Adjust text color for all nested elements */
+.certificates-section h2, 
+.certificates-section h5, 
+.certificates-section h6,
+.certificates-section p,
+.certificates-section a {
+  color: var(--text-color) !important;
+}
+
+/* Override Bootstrap button for theme compatibility */
+.certificates-section .btn-outline-primary {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.certificates-section .btn-outline-primary:hover {
+  background-color: var(--accent-color);
+  color: var(--header-bg); /* Dark text on accent hover */
+}
