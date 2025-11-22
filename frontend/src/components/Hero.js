@@ -9,7 +9,7 @@ const Hero = () => {
     // id="about" allows the Header link to navigate here
     <section id="about" className="hero-section">
       {/* <img src={profilePic} alt="Jane Doe Profile" className="profile-pic" /> */}
-      <h2>Hi, I'm Jane Doe.</h2>
+      <h2>Hi, I'm Raziel Lloyd Sevilla.</h2>
       <h1>A **Full-Stack Developer** & Problem Solver</h1>
       <p>
         I build modern, responsive web applications using React, Node.js, and MongoDB. 
