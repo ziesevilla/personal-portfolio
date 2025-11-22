@@ -1,0 +1,61 @@
+/* src/styles/Hero.css */
+
+.hero-section {
+  padding: 100px 20px;
+  background-color: var(--card-bg); 
+  text-align: center;
+  border-radius: 8px;
+  margin: 40px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  color: var(--text-color); 
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.hero-section h2 {
+  font-size: 1.5em;
+  /* Use the text color variable for consistency */
+  color: var(--text-color); 
+  margin-bottom: 10px;
+}
+
+.hero-section h1 {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  font-size: 1.2em;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+  /* Use the text color variable */
+  color: var(--text-color);
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  margin: 0 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: var(--text-color); 
+  border: 1px solid var(--text-color);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.primary-btn {
+  background-color: transparent;
+  /* Use text color for border and text */
+  color: var(--text-color); 
+  border: 1px solid var(--text-color); 
+}

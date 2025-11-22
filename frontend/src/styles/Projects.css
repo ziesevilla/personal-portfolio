@@ -1,0 +1,80 @@
+/* src/styles/Projects.css */
+
+.projects-section {
+  padding: 80px 20px;
+  /* 💡 Use the main background variable */
+  background-color: var(--background-color); 
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.projects-section h2 {
+  /* Use the text color variable */
+  color: var(--text-color); 
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: 1.1em;
+  /* Use the text color variable for consistency */
+  color: var(--text-color); 
+  margin-bottom: 40px;
+}
+
+.project-card {
+  /* 💡 Use the card background variable */
+  background-color: var(--card-bg); 
+  padding: 25px;
+  border-radius: 8px;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.project-card h3 {
+  /* Use the text color variable */
+  color: var(--text-color); 
+  margin-bottom: 10px;
+}
+
+.project-links a {
+  /* Use the text color variable */
+  color: var(--text-color); 
+  /* ... (rest of styles) ... */
+}
+
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.tech-stack {
+  margin: 15px 0;
+}
+
+.tech-tag {
+  display: inline-block;
+  background-color: #61dafb;
+  color: #282c34;
+  font-size: 0.8em;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+
+.project-links a:hover {
+  border-bottom: 2px solid #61dafb;
+}
+

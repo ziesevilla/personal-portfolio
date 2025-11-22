@@ -1,0 +1,22 @@
+/* src/styles/Footer.css */
+
+
+.main-footer {
+  /* 💡 Use the header background variable */
+  background-color: var(--header-bg); 
+  color: #aaa; /* Keep this slightly lighter for contrast */
+  padding: 20px;
+  text-align: center;
+  margin-top: 50px;
+  transition: background-color 0.3s;
+}
+
+.main-footer p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.react-color {
+  color: #61dafb;
+  font-weight: bold;
+}

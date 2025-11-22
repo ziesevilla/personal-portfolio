@@ -1,0 +1,54 @@
+/* src/styles/Contact.css */
+
+.contact-section {
+  padding: 80px 20px;
+  /* 💡 Use the card background variable */
+  background-color: var(--card-bg); 
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.contact-section h2 {
+  /* Use the text color variable */
+  color: var(--text-color); 
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.social-links a {
+  /* Use the text color variable */
+  color: var(--text-color); 
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 1.1em;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.2s, color 0.3s;
+}
+
+.social-links a:hover {
+  /* Use the text color variable for border */
+  border-bottom: 1px solid var(--text-color); 
+}
+
+.contact-section .section-subtitle {
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-email a {
+  font-size: 1.2em;
+  color: #61dafb;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.contact-email a:hover {
+  color: #38a1c3;
+}
+
+.social-links {
+  margin-top: 30px;
+}
