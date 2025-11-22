@@ -1,13 +1,28 @@
 // src/components/Header.js
 
 import React from 'react';
+import '../styles/Header.css'; 
+import ThemeToggle from './ThemeToggle';
 
-// Define the functional component
 const Header = () => {
   return (
-    <h1>This is the Header Page</h1>
+    <header className="main-header"> 
+      <nav className="nav-bar">
+        <div className="nav-logo">
+          <h1>Jane Doe | Developer</h1>
+        </div>
+        <div className="nav-links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+        
+        {/* Place the Theme Toggle Button */}
+        <ThemeToggle /> 
+        
+      </nav>
+    </header>
   );
 };
 
-// Export the component so it can be used in other files
 export default Header;

@@ -1,9 +1,8 @@
-// ✅ src/App.js
+// src/App.js
 
 import React from 'react';
-import './App.css'; 
+import './App.css'; // Global styles
 
-// **Crucial: Default imports here**
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Projects from './components/Projects';

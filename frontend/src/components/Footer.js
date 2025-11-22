@@ -1,10 +1,16 @@
 // src/components/Footer.js
 
 import React from 'react';
+import '../styles/Footer.css'; 
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
-    <h1>This is the Footer Page</h1>
+    <footer className="main-footer">
+      <p>
+        &copy; {currentYear} Raziel Lloyd Sevilla. Built with <span className="react-color">React</span>.
+      </p>
+    </footer>
   );
 };
 

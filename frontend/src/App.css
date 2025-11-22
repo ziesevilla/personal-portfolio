@@ -1,0 +1,43 @@
+/* src/App.css (Global Styles) */
+
+/* --- Theme Variables (Default/Light) --- */
+:root {
+  --background-color: #f7f7f7;
+  --text-color: #333;
+  --header-bg: #282c34;
+  --card-bg: white;
+  --accent-color: #61dafb;
+}
+
+/* --- Dark Theme Variables --- */
+body.dark-theme {
+  --background-color: #1a1a2e; /* Darker blue/black background */
+  --text-color: #f0f0f0; /* Light text */
+  --header-bg: #0f0f18; /* Even darker header */
+  --card-bg: #2c2c44; /* Dark card background */
+  --accent-color: #61dafb;
+}
+
+
+
+/* Reset basic margin and padding */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Style the main container that wraps the whole portfolio */
+.portfolio-app {
+  max-width: 100%;
+  margin: 0 auto; /* Center the content */
+  min-height: 100vh;
+}
