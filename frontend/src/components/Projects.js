@@ -1,43 +1,107 @@
-// src/components/Projects.js (Refactored)
+// src/components/Projects.js
 
-import React from 'react';
+import React, { useState } from 'react';
 import projectData from '../data/projectData';
+import '../styles/Projects.css';
 
 const Projects = () => {
+  // 💡 STATE CHANGE: Now using an array to store multiple selections
+  const [selectedTechs, setSelectedTechs] = useState([]);
+
+  // Get all unique technologies for the filter bar
+  const allTechStack = ["All", ...new Set(projectData.flatMap(p => p.tech))].sort();
+
+  // 💡 TOGGLE FUNCTION
+  const handleFilterClick = (tech) => {
+    if (tech === "All") {
+      // If "All" is clicked, clear filters to show everything
+      setSelectedTechs([]);
+    } else {
+      // If a specific tech is clicked...
+      if (selectedTechs.includes(tech)) {
+        // Remove it if already selected
+        setSelectedTechs(selectedTechs.filter(t => t !== tech));
+      } else {
+        // Add it if not selected
+        setSelectedTechs([...selectedTechs, tech]);
+      }
+    }
+  };
+
+  // 💡 MULTI-FILTER LOGIC
+  const filteredProjects = selectedTechs.length === 0
+    ? projectData // If array is empty, show ALL
+    : projectData.filter(project => 
+        // Returns true if the project contains AT LEAST ONE of the selected tags
+        project.tech.some(t => selectedTechs.includes(t))
+      );
+
   return (
     <section id="projects" className="projects-section container py-5">
-      <h2 className="text-center display-4 mb-2">My Work</h2>
-      <p className="text-center text-muted mb-5">Check out some of the projects I've built.</p>
+      <h2 className="text-center display-4 mb-2 section-title">
+        <span className="title-decoration">{'//'}</span> Project Archive <span className="title-decoration">{'//'}</span>
+      </h2>
       
-      {/* Use Bootstrap's row and column structure */}
+      {/* FILTER STREAM */}
+      <div className="filter-scroll-container mb-5">
+        <div className="filter-track">
+          {allTechStack.map(tech => {
+            // Determine if this specific button should look active
+            const isActive = tech === "All" 
+              ? selectedTechs.length === 0 
+              : selectedTechs.includes(tech);
+
+            return (
+              <button 
+                key={tech}
+                className={`btn filter-btn ${isActive ? 'active' : ''}`}
+                onClick={() => handleFilterClick(tech)}
+              >
+                <span className="status-dot"></span> {tech}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* PROJECTS GRID */}
       <div className="row g-4"> 
-        {projectData.map(project => (
-          // Define responsive column width: 12 units on small screens, 6 on medium, 4 on large
-          <div key={project.id} className="col-12 col-md-6 col-lg-4"> 
-            {/* Use card component */}
-            <div className="card h-100 shadow-sm border-0"> 
-              <div className="card-body">
-                <h3 className="card-title text-primary">{project.title}</h3>
-                <p className="card-text">{project.description}</p>
+        {filteredProjects.length > 0 ? (
+          filteredProjects.map(project => (
+            <div key={project.id} className="col-12 col-md-6 col-lg-4"> 
+              <div className="card h-100 project-card-retro"> 
+                <div className="card-body">
+                  <div className="d-flex justify-content-between align-items-start mb-3">
+                      <h3 className="card-title">{project.title}</h3>
+                      <i className="fas fa-folder-open folder-icon"></i>
+                  </div>
+                  
+                  <p className="card-text">{project.description}</p>
+                  
+                  <div className="tech-stack mb-3">
+                    {project.tech.map(t => (
+                      <span key={t} className="tech-pill">{t}</span> 
+                    ))}
+                  </div>
+                </div>
                 
-                <div className="tech-stack mb-3">
-                  {project.tech.map(t => (
-                    // Use Bootstrap badge utility
-                    <span key={t} className="badge bg-info text-dark me-2">{t}</span> 
-                  ))}
+                <div className="card-footer bg-transparent border-0 d-flex justify-content-between">
+                  <a href={project.repoLink} target="_blank" rel="noopener noreferrer" className="project-link">
+                    <i className="fab fa-github me-2"></i> Code
+                  </a>
+                  <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="project-link live-link">
+                    <i className="fas fa-external-link-alt me-2"></i> Demo
+                  </a>
                 </div>
               </div>
-              <div className="card-footer bg-white border-0">
-                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="card-link fw-bold">
-                  View Live
-                </a>
-                <a href={project.repoLink} target="_blank" rel="noopener noreferrer" className="card-link">
-                  GitHub Repo
-                </a>
-              </div>
             </div>
+          ))
+        ) : (
+          // Optional: Message if no projects match the combination
+          <div className="col-12 text-center text-muted mt-5">
+            <p>No projects found matching these filters.</p>
           </div>
-        ))}
+        )}
       </div>
     </section>
   );

@@ -2,79 +2,242 @@
 
 .projects-section {
   padding: 80px 20px;
-  /* 💡 Use the main background variable */
-  background-color: var(--background-color); 
-  text-align: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
   transition: background-color 0.3s;
 }
 
-.projects-section h2 {
-  /* Use the text color variable */
-  color: var(--text-color); 
-  font-size: 2.5em;
-  margin-bottom: 10px;
+/* --- TITLE STYLING --- */
+.section-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
-.section-subtitle {
-  font-size: 1.1em;
-  /* Use the text color variable for consistency */
-  color: var(--text-color); 
-  margin-bottom: 40px;
+.title-decoration {
+    color: var(--neon-accent);
+    margin-right: 10px;
 }
 
-.project-card {
-  /* 💡 Use the card background variable */
-  background-color: var(--card-bg); 
-  padding: 25px;
-  border-radius: 8px;
-  text-align: left;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, background-color 0.3s, color 0.3s;
+/* --- FILTER BUTTONS --- */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.project-card h3 {
-  /* Use the text color variable */
-  color: var(--text-color); 
-  margin-bottom: 10px;
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    border-radius: 20px; /* Rounded pills */
+    padding: 8px 20px;
+    font-family: 'M PLUS 1p', sans-serif;
+    font-weight: bold;
+    transition: all 0.3s ease;
 }
 
-.project-links a {
-  /* Use the text color variable */
-  color: var(--text-color); 
-  /* ... (rest of styles) ... */
+.filter-btn:hover {
+    border-color: var(--neon-accent);
+    color: var(--neon-accent);
+    box-shadow: 0 0 8px var(--neon-accent);
 }
 
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1000px;
-  margin: 0 auto;
+.filter-btn.active {
+    background-color: var(--neon-accent);
+    border-color: var(--neon-accent);
+    color: var(--header-bg); /* Dark text on neon bg */
+    box-shadow: 0 0 15px var(--neon-accent);
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+/* --- HOLO-CARD STYLING --- */
+
+.project-card-retro {
+    /* Glassmorphism Background */
+    background: rgba(255, 255, 255, 0.05); /* Very subtle tint */
+    backdrop-filter: blur(5px); /* Frosted glass effect */
+    
+    border: 1px solid rgba(var(--text-color), 0.1);
+    border-radius: 12px;
+    padding: 10px; /* Internal padding */
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+    overflow: hidden;
+    position: relative;
 }
 
-.tech-stack {
-  margin: 15px 0;
+/* Dark Mode Specific Card Background */
+body.dark-theme .project-card-retro {
+    background: rgba(0, 0, 0, 0.3); /* Darker glass */
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.tech-tag {
-  display: inline-block;
-  background-color: #61dafb;
-  color: #282c34;
-  font-size: 0.8em;
-  padding: 5px 10px;
-  border-radius: 3px;
-  margin-right: 5px;
-  margin-bottom: 5px;
+/* Hover Effect: Neon Glow & Lift */
+.project-card-retro:hover {
+    transform: translateY(-10px);
+    border-color: var(--neon-accent);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 
+                0 0 15px var(--neon-accent) inset; /* Inner glow */
 }
 
-
-.project-links a:hover {
-  border-bottom: 2px solid #61dafb;
+/* Card Content */
+.project-card-retro .card-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--accent-color); /* Vibrant Purple */
+    margin-bottom: 15px;
 }
 
+.folder-icon {
+    color: var(--text-color);
+    opacity: 0.5;
+    font-size: 1.2rem;
+}
+
+.project-card-retro .card-text {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+/* --- TECH STACK PILLS --- */
+.tech-pill {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: bold;
+    
+    /* Outline style instead of solid block */
+    border: 1px solid var(--neon-accent);
+    color: var(--neon-accent);
+    
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    background: rgba(0, 255, 255, 0.05); /* Slight tint */
+}
+
+/* --- ACTION LINKS --- */
+.project-link {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.project-link:hover {
+    opacity: 1;
+    color: var(--neon-accent);
+    text-shadow: 0 0 5px var(--neon-accent);
+}
+
+.live-link {
+    color: var(--neon-accent) !important;
+    opacity: 1;
+}
+
+.live-link:hover {
+    text-shadow: 0 0 8px var(--neon-accent);
+}
+
+/* src/styles/Projects.css */
+
+/* ... (Keep Layout and Title Styles) ... */
+
+/* --- 💡 NEW: DATA STREAM FILTER BAR --- */
+
+.filter-scroll-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow-x: auto; /* Allow horizontal scroll */
+    padding: 10px 0;
+    
+    /* Mask edges to show it's scrollable */
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+/* The track that holds the buttons */
+.filter-track {
+    display: flex;
+    gap: 15px;
+    width: max-content; /* Ensure it extends as far as needed */
+    padding: 0 20px; /* Safe space for side masks */
+}
+
+/* Custom Scrollbar Styling (Themed) */
+.filter-scroll-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.filter-scroll-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.filter-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--neon-accent);
+    border-radius: 10px;
+}
+
+/* --- BUTTON STYLING (Updated) --- */
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(var(--text-color), 0.3);
+    color: var(--text-color);
+    border-radius: 4px; /* More retro square look */
+    padding: 8px 20px;
+    font-family: 'M PLUS 1p', sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    white-space: nowrap; /* Prevent text wrapping */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-dot {
+    height: 6px;
+    width: 6px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: background-color 0.3s;
+}
+
+.filter-btn:hover {
+    border-color: var(--neon-accent);
+    color: var(--neon-accent);
+    transform: translateY(-2px);
+}
+
+.filter-btn:hover .status-dot {
+    background-color: var(--neon-accent);
+    opacity: 1;
+    box-shadow: 0 0 5px var(--neon-accent);
+}
+
+.filter-btn.active {
+    background: rgba(var(--neon-accent), 0.1); /* Transparent tint */
+    border-color: var(--neon-accent);
+    color: var(--neon-accent);
+    box-shadow: 0 0 10px var(--neon-accent) inset;
+}
+
+.filter-btn.active .status-dot {
+    background-color: var(--neon-accent);
+    opacity: 1;
+    box-shadow: 0 0 8px var(--neon-accent);
+}
