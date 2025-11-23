@@ -14,13 +14,13 @@ const contactData = {
     },
     {
       name: "GitHub",
-      url: "https://github.com/yourprofile",
+      url: "https://github.com/ziesevilla",
       iconClass: "fab fa-github"
     },
     {
-      name: "Twitter",
-      url: "https://twitter.com/yourhandle",
-      iconClass: "fab fa-twitter"
+      name: "Facebook",
+      url: "https://www.facebook.com/raziel.sevilla.2025/",
+      iconClass: "fab fa-facebook"
     }
     // You can add more links (e.g., Portfolio, Medium, etc.)
   ]

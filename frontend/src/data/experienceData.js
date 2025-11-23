@@ -1,48 +1,60 @@
 // src/data/experienceData.js
 
 const experienceData = [
-  {
+{
     id: 1,
-    title: "Software Engineer",
-    company: "Tech Solutions Inc.",
-    duration: "Jan 2023 - Present",
+    title: "Student Government Secretary",
+    company: "College of Computing Studies - SG - University of Cabuyao",
+    duration: "September 2024 - May 2025",
     description: [
-      "Led the migration of legacy front-end applications to React and TypeScript, resulting in a 20% reduction in production bugs.",
-      "Collaborated with design teams to implement responsive UI features across all company platforms using Bootstrap and custom SASS.",
-      "Developed and maintained RESTful APIs using Node.js and Express, supporting millions of monthly requests."
+      "Documented official meeting minutes, resolutions, and correspondence for the College Student Council.",
+      "Streamlined internal communication channels between the student body, faculty, and administration.",
+      "Managed the logistics and scheduling for college-wide technology seminars and academic events."
     ]
   },
   {
     id: 2,
-    title: "Junior Web Developer",
-    company: "Digital Studio Co.",
-    duration: "Aug 2021 - Dec 2022",
+    title: "Chief Financial Officer",
+    company: "Amazon Web Services Cloud Clubs - University of Cabuyao",
+    duration: "September 2024 - May 2025",
     description: [
-      "Built and deployed over 10 client websites using HTML, CSS, and basic JavaScript.",
-      "Implemented SEO best practices, leading to a 40% increase in organic search traffic for key clients.",
-      "Assisted senior developers with database management using PostgreSQL."
+      "Managed the organization's financial budget for cloud computing workshops, certification drives, and guest speaker events.",
+      "Oversaw resource allocation for student AWS credits and technical learning materials.",
+      "Spearheaded fundraising initiatives to ensure the sustainability of club activities and projects."
     ]
   },
   {
     id: 3,
-    title: "Web Development Intern",
-    company: "Creative Pulse Agency",
-    duration: "May 2020 - Aug 2021",
+    title: "Vice-Chief Relational Officer",
+    company: "Amazon Web Services Cloud Clubs - University of Cabuyao",
+    duration: "January 2024 - May 2024",
     description: [
-      "Collaborated with the UI/UX team to translate Figma designs into interactive HTML/CSS prototypes.",
-      "Identified and fixed cross-browser compatibility issues, ensuring consistent rendering on Chrome, Firefox, and Safari.",
-      "Participated in code reviews and learned agile methodologies (Scrum) in a fast-paced agency environment."
+      "Facilitated strategic partnerships with other student tech organizations to host collaborative hackathons.",
+      "Established a peer mentorship program connecting senior cloud enthusiasts with beginners.",
+      "Boosted member engagement and retention through targeted community outreach campaigns."
     ]
   },
   {
     id: 4,
-    title: "Freelance Front-End Developer",
-    company: "Self-Employed",
-    duration: "Jan 2019 - Apr 2020",
+    title: "1st Year Representative",
+    company: "Association of Computer Science Student",
+    duration: "September 2023 - May 2024",
     description: [
-      "Designed and developed custom landing pages for local small businesses using HTML5, CSS3, and jQuery.",
-      "Customized WordPress themes to meet specific client branding requirements and functional needs.",
-      "Managed client communication, requirements gathering, and project timelines independently."
+      "Represented the concerns and academic interests of the first-year computer science student body in council meetings.",
+      "Acted as a liaison between freshmen and upper-class mentors to foster a supportive coding community.",
+      "Assisted in organizing 'Freshmen Welcome' coding bootcamps and technical orientation events."
+    ]
+  },
+  {
+    id: 5,
+    title: "Student Intern",
+    company: "St. Magdalene Polyclinic",
+    duration: "May 2023",
+    description: [
+       "Assisted administrative staff with daily office tasks, including organizing patient records, preparing documents, and managing appointment schedules.",
+       "Supported front desk operations by handling inquiries, scheduling consultations, and maintaining accurate data entry in clinic databases.",
+       "Helped coordinate communication between medical personnel, patients, and external contacts, ensuring timely and professional responses.",
+       "Observed and practiced proper data confidentiality and patient privacy protocols in compliance with clinic policies."
     ]
   }
 ];
