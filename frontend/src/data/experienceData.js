@@ -22,6 +22,28 @@ const experienceData = [
       "Implemented SEO best practices, leading to a 40% increase in organic search traffic for key clients.",
       "Assisted senior developers with database management using PostgreSQL."
     ]
+  },
+  {
+    id: 3,
+    title: "Web Development Intern",
+    company: "Creative Pulse Agency",
+    duration: "May 2020 - Aug 2021",
+    description: [
+      "Collaborated with the UI/UX team to translate Figma designs into interactive HTML/CSS prototypes.",
+      "Identified and fixed cross-browser compatibility issues, ensuring consistent rendering on Chrome, Firefox, and Safari.",
+      "Participated in code reviews and learned agile methodologies (Scrum) in a fast-paced agency environment."
+    ]
+  },
+  {
+    id: 4,
+    title: "Freelance Front-End Developer",
+    company: "Self-Employed",
+    duration: "Jan 2019 - Apr 2020",
+    description: [
+      "Designed and developed custom landing pages for local small businesses using HTML5, CSS3, and jQuery.",
+      "Customized WordPress themes to meet specific client branding requirements and functional needs.",
+      "Managed client communication, requirements gathering, and project timelines independently."
+    ]
   }
 ];
 

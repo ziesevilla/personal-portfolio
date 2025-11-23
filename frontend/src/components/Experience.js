@@ -1,41 +1,84 @@
 // src/components/Experience.js
 
-import React from 'react';
-import experienceData from '../data/experienceData'; // Import data
-import '../styles/Experience.css'; // Optional custom styling
+import React, { useState } from 'react';
+import experienceData from '../data/experienceData'; 
+import '../styles/Experience.css'; 
 
-const Experiences = () => {
+const Experience = () => {
+  const [expandedId, setExpandedId] = useState(null);
+
+  const toggleExpand = (id) => {
+    setExpandedId(expandedId === id ? null : id);
+  };
+
   return (
-    <section id="experience" className="experience-section container py-5">
-      <h2 className="text-center display-4 mb-2">Work Experience</h2>
-      <p className="text-center text-muted mb-5">
-        My professional journey and key responsibilities.
-      </p>
+    <section id="experience" className="experience-section container-fluid py-5">
+      
+      {/* 💡 NEW: Animated Binary Background */}
+      <div className="binary-background">
+        {/* Creating 10 streams of data with different animation delays defined in CSS */}
+        <div className="binary-stream stream-1">01010101</div>
+        <div className="binary-stream stream-2">10110010</div>
+        <div className="binary-stream stream-3">00101001</div>
+        <div className="binary-stream stream-4">11100100</div>
+        <div className="binary-stream stream-5">01010111</div>
+        <div className="binary-stream stream-6">10101010</div>
+        <div className="binary-stream stream-7">00011100</div>
+        <div className="binary-stream stream-8">11010101</div>
+        <div className="binary-stream stream-9">01110100</div>
+        <div className="binary-stream stream-10">10010011</div>
+      </div>
 
-      {experienceData.map(job => (
-        // Bootstrap Card for structure
-        <div key={job.id} className="card mb-4 shadow-sm">
-          <div className="card-body">
-            <div className="d-flex justify-content-between align-items-center mb-2">
-              <h4 className="card-title mb-0 text-primary">{job.title}</h4>
-              <span className="badge bg-secondary">{job.duration}</span>
-            </div>
-            <h5 className="card-subtitle mb-3 text-muted">{job.company}</h5>
-            
-            {/* List Group for bullet points */}
-            <ul className="list-group list-group-flush">
-              {job.description.map((point, index) => (
-                <li key={index} className="list-group-item">
-                  <i className="fas fa-check-circle me-2 text-success"></i> 
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </div>
+      {/* Ensure content sits on top of the background */}
+      <div className="container position-relative" style={{ zIndex: 2 }}>
+        <h2 className="text-center display-4 mb-5 section-title">
+          <span className="title-decoration">{'-'}</span> Experience <span className="title-decoration">{'-'}</span>
+        </h2>
+        
+        <div className="timeline">
+          {experienceData.map(job => {
+            const isExpanded = expandedId === job.id;
+
+            return (
+              <div 
+                key={job.id} 
+                className={`timeline-item ${isExpanded ? 'expanded' : ''}`} 
+                onClick={() => toggleExpand(job.id)}
+              >
+                {/* The glowing dot */}
+                <div className={`timeline-marker ${isExpanded ? 'active-marker' : ''}`}></div>
+
+                {/* The Content Card */}
+                <div className="timeline-content retro-card">
+                  <div className="card-header-custom">
+                    <div className="header-top">
+                      <h3 className="job-title">{job.title}</h3>
+                      <i className={`fas fa-chevron-down toggle-icon ${isExpanded ? 'rotate' : ''}`}></i>
+                    </div>
+                    <div className="job-meta">
+                      <span className="company-name">@ {job.company}</span>
+                      <span className="job-duration">{job.duration}</span>
+                    </div>
+                  </div>
+
+                  {isExpanded && (
+                    <ul className="job-description">
+                      {job.description.map((point, index) => (
+                        <li key={index} className="fade-in-text">
+                          <i className="fas fa-angle-right me-2 accent-icon"></i> 
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
-      ))}
+      </div>
     </section>
   );
 };
 
-export default Experiences;
+export default Experience;
