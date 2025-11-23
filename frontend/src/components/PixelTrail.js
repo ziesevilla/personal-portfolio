@@ -2,39 +2,48 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import '../styles/PixelTrail.css';
 
-// Configuration for the trail effect
-const TRAIL_LENGTH = 15; // Number of pixels in the trail
-const PIXEL_SIZE = 8;  // Size of each pixel element in pixels
-const MAX_SHIFT = 6;  // Maximum random pixel shift in one direction (for glitch effect)
+const PIXEL_SIZE = 30; 
+const MAX_SHIFT = 6; 
+const DECAY_RATE = 0.05; // 💡 How fast pixels fade (0.05 = fast, 0.01 = slow)
 
 const PixelTrail = () => {
-  // State to store the position of each pixel in the trail
   const [trail, setTrail] = useState([]);
 
-  // Function to update the trail based on mouse movement
+  // 1. Handle Mouse Movement (Adds new pixels)
   const handleMouseMove = useCallback((e) => {
-    // 1. Create a random shift within MAX_SHIFT range (The Glitch Effect)
     const shiftX = (Math.random() * MAX_SHIFT * 2) - MAX_SHIFT;
     const shiftY = (Math.random() * MAX_SHIFT * 2) - MAX_SHIFT;
 
     const newPixel = {
-      id: Date.now(), // Unique ID for React key
+      id: Date.now() + Math.random(), // Add random to ensure unique key if bursts happen
       x: e.clientX + shiftX,
       y: e.clientY + shiftY,
+      life: 1.0 // 💡 Start with 100% life
     };
 
-    // 2. Add the new pixel and remove the oldest one
-    setTrail(currentTrail => {
-      // Note: requestAnimationFrame is often used here for optimal performance, 
-      // but sticking to standard React practices for simplicity
-      return [newPixel, ...currentTrail].slice(0, TRAIL_LENGTH);
-    });
+    setTrail(prev => [...prev, newPixel]);
   }, []);
 
-  // Set up and clean up the global mouse move listener
+  // 2. The "Game Loop" (Fades pixels over time)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTrail(currentTrail => {
+        // If no pixels, do nothing (saves performance)
+        if (currentTrail.length === 0) return currentTrail;
+
+        // Reduce life of all pixels and remove dead ones
+        return currentTrail
+          .map(pixel => ({ ...pixel, life: pixel.life - DECAY_RATE }))
+          .filter(pixel => pixel.life > 0);
+      });
+    }, 20); // Run every 20ms (approx 50fps)
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // 3. Attach Listeners
   useEffect(() => {
     document.addEventListener('mousemove', handleMouseMove);
-
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
@@ -42,21 +51,19 @@ const PixelTrail = () => {
 
   return (
     <>
-      {trail.map((pixel, index) => {
-        // Calculate the scale based on the index (newest=1, oldest=0.5)
-        const scaleFactor = 1 - (index / TRAIL_LENGTH) * 0.5; 
+      {trail.map((pixel) => {
+        // 💡 Scale and Opacity now depend on the 'life' property
+        // Life goes from 1.0 -> 0.0
+        const scaleFactor = pixel.life; // Shrink as it dies
         
         return (
           <div
             key={pixel.id}
             className="trail-pixel"
             style={{
-              // Center the pixel on the adjusted position
               left: `${pixel.x - PIXEL_SIZE / 2}px`,
               top: `${pixel.y - PIXEL_SIZE / 2}px`,
-              // Fade the pixel based on its age (index)
-              opacity: 1 - (index / TRAIL_LENGTH),
-              // Apply scale transform for the shrinking effect
+              opacity: pixel.life, 
               transform: `scale(${scaleFactor})`, 
             }}
           />

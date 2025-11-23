@@ -8,17 +8,14 @@ const Certificates = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const scrollContainerRef = useRef(null);
 
-  // Filter logic
   const filteredCerts = certificateData.filter(cert => 
     cert.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     cert.issuer.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Scroll Logic
   const scroll = (direction) => {
     const container = scrollContainerRef.current;
     if (container) {
-      // Scroll by the width of a card + gap (approx 320px)
       const scrollAmount = direction === 'left' ? -320 : 320;
       container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
@@ -26,18 +23,32 @@ const Certificates = () => {
 
   return (
     <section id="certificates" className="certificates-section container-fluid">
-      <div className="cert-content-wrapper">
+      
+      {/* 💡 NEW: SUBTLE FLOATING PARTICLES */}
+      <div className="bg-particles">
+        <div className="particle p-1"></div>
+        <div className="particle p-2"></div>
+        <div className="particle p-3"></div>
+        <div className="particle p-4"></div>
+        <div className="particle p-5"></div>
+        <div className="particle p-6"></div>
+        <div className="particle p-7"></div>
+        <div className="particle p-8"></div>
+        <div className="particle p-9"></div>
+        <div className="particle p-10"></div>
+      </div>
+
+      {/* Main Content (z-index 2) */}
+      <div className="cert-content-wrapper position-relative" style={{ zIndex: 2 }}>
         
-        {/* Header Section */}
         <div className="text-center mb-4">
           <h2 className="display-4 section-title">
-            <span className="title-decoration">#</span> Certificates <span className="title-decoration">#</span>
+            <span className="title-decoration">#</span> Achievements
           </h2>
           <p className="text-muted">
             Unlocked Credentials ({certificateData.length})
           </p>
           
-          {/* Search Bar */}
           <div className="search-container mt-3">
             <i className="fas fa-search search-icon"></i>
             <input 
@@ -49,20 +60,16 @@ const Certificates = () => {
           </div>
         </div>
 
-        {/* 💡 CAROUSEL CONTAINER */}
         <div className="carousel-wrapper">
-          {/* Left Button */}
           <button className="carousel-btn left-btn" onClick={() => scroll('left')}>
             <i className="fas fa-chevron-left"></i>
           </button>
 
-          {/* Scrollable Track */}
           <div className="cert-carousel" ref={scrollContainerRef}>
             {filteredCerts.map(cert => (
               <div key={cert.id} className="cert-card-wrapper">
                 <div className="cert-card">
                   
-                  {/* FRONT FACE */}
                   <div className="cert-content">
                     <div className="icon-box">
                       <i className={`${cert.icon} fa-3x`}></i>
@@ -71,7 +78,6 @@ const Certificates = () => {
                     <div className="cert-issuer-tag">{cert.issuer}</div>
                   </div>
 
-                  {/* HOVER OVERLAY */}
                   <div className="cert-overlay">
                     <div className="overlay-content">
                       <p className="cert-date">Issued: {cert.date}</p>
@@ -82,7 +88,6 @@ const Certificates = () => {
                     </div>
                   </div>
 
-                  {/* Corner Decor */}
                   <div className="corner-decor top-left"></div>
                   <div className="corner-decor bottom-right"></div>
                 </div>
@@ -94,7 +99,6 @@ const Certificates = () => {
             )}
           </div>
 
-          {/* Right Button */}
           <button className="carousel-btn right-btn" onClick={() => scroll('right')}>
             <i className="fas fa-chevron-right"></i>
           </button>

@@ -8,12 +8,11 @@ const Contact = () => {
   const { email, message, socialLinks } = contactData;
   const [copySuccess, setCopySuccess] = useState('');
 
-  // 💡 Function to copy email to clipboard
+  // Function to copy email to clipboard
   const handleCopyEmail = async () => {
     try {
       await navigator.clipboard.writeText(email);
       setCopySuccess('Copied!');
-      // Reset message after 2 seconds
       setTimeout(() => setCopySuccess(''), 2000);
     } catch (err) {
       setCopySuccess('Failed to copy');
@@ -22,13 +21,20 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact-section container-fluid py-5">
-      <div className="container contact-wrapper">
+      
+      {/* 💡 NEW: RETRO HORIZON BACKGROUND */}
+      <div className="retro-bg-container">
+        <div className="retro-grid"></div>
+        <div className="horizon-glow"></div>
+      </div>
+
+      <div className="container contact-wrapper position-relative" style={{ zIndex: 2 }}>
         
         <h2 className="text-center display-4 mb-4 section-title">
           <span className="title-decoration">{'>>>'}</span> Connect With Me <span className="title-decoration">{'>>>'}</span>
         </h2>
 
-        {/* 💡 THE CYBER CARD */}
+        {/* THE CYBER CARD */}
         <div className="cyber-card">
           
           {/* Status Bar */}
@@ -49,7 +55,6 @@ const Contact = () => {
               <i className="far fa-copy"></i>
             </span>
             
-            {/* Tooltip for copy feedback */}
             <div className={`copy-feedback ${copySuccess ? 'show' : ''}`}>
               {copySuccess}
             </div>
