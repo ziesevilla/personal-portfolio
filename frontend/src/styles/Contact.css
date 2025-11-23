@@ -311,3 +311,51 @@ body.dark-theme .retro-grid {
     linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
 }
+
+/* --- 📱 MOBILE RESPONSIVENESS (Append to bottom) --- */
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 80px 15px;
+  }
+
+  .cyber-card {
+    padding: 20px; /* Reduce padding */
+    width: 100%;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+
+  /* Allow Email box to break line */
+  .email-command-line {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .email-text {
+    font-size: 0.9rem;
+    word-break: break-all; /* Break long emails */
+    text-align: center;
+  }
+
+  .prompt {
+    margin: 0;
+    display: none; /* Hide the '>' prompt on mobile to save space */
+  }
+
+  /* Stack Social Buttons */
+  .social-grid {
+    gap: 10px;
+  }
+
+  .social-btn {
+    width: 100%; /* Full width buttons */
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+}

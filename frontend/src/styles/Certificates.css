@@ -352,3 +352,50 @@ body.dark-theme .cert-card {
   /* Make solid on hover to focus */
   background: var(--card-bg); 
 }
+
+/* --- 📱 MOBILE RESPONSIVENESS (Append to bottom) --- */
+
+@media (max-width: 768px) {
+  .certificates-section {
+    /* 💡 IMPORTANT: Un-fix height on mobile to prevent cut-off content */
+    height: auto; 
+    min-height: 100vh;
+    padding: 100px 10px 60px 10px; /* Add top padding for header */
+    flex-direction: column;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  /* Make Carousel Buttons smaller and floating */
+  .carousel-wrapper {
+    position: relative;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    background: rgba(0, 0, 0, 0.8); /* Darker bg for visibility */
+  }
+
+  .left-btn { left: -10px; }
+  .right-btn { right: -10px; }
+
+  /* Adjust Card Size */
+  .cert-card-wrapper {
+    width: 260px; /* Slightly narrower cards */
+  }
+
+  .cert-card {
+    height: 280px; /* Slightly shorter */
+    padding: 15px;
+  }
+
+  .icon-box i {
+    font-size: 2.5em; /* Smaller icon */
+  }
+}

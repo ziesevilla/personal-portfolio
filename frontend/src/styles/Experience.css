@@ -353,3 +353,59 @@ body.dark-theme .expanded .retro-card {
   animation-delay: -5s; 
   font-size: 0.7rem; 
 }
+
+/* --- 📱 MOBILE RESPONSIVENESS (Append to bottom) --- */
+
+@media (max-width: 768px) {
+  .experience-section {
+    padding: 60px 15px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    margin-bottom: 40px !important;
+  }
+
+  /* Tighten the timeline */
+  .timeline {
+    padding: 0;
+  }
+
+  .timeline::before {
+    left: 10px; /* Move line closer to edge */
+  }
+
+  .timeline-item {
+    padding-left: 35px; /* Reduce indentation */
+    margin-bottom: 30px;
+  }
+
+  .timeline-marker {
+    left: 4px; /* Align dot with new line position */
+  }
+
+  /* Compact Card */
+  .retro-card {
+    padding: 15px;
+  }
+
+  .card-header-custom {
+    margin-bottom: 10px;
+  }
+
+  /* Stack Header Info */
+  .header-top {
+    align-items: flex-start;
+  }
+
+  .job-title {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+
+  .job-meta {
+    flex-direction: column;
+    gap: 5px;
+    font-size: 0.8rem;
+  }
+}

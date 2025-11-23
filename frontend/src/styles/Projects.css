@@ -314,3 +314,30 @@ body.dark-theme .project-bg-grid {
     linear-gradient(var(--neon-accent) 1px, transparent 1px),
     linear-gradient(90deg, var(--neon-accent) 1px, transparent 1px);
 }
+
+/* --- 📱 MOBILE RESPONSIVENESS (Append to bottom) --- */
+
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 60px 15px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  /* Ensure filters are easy to tap */
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  /* Adjust card internal spacing */
+  .project-card-retro {
+    padding: 15px;
+  }
+
+  .project-card-retro .card-title {
+    font-size: 0.95rem;
+  }
+}

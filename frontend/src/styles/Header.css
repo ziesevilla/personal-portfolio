@@ -77,3 +77,37 @@ body.dark-theme .nav-link {
   align-items: center;
 }
 */
+
+/* --- 📱 MOBILE RESPONSIVENESS (Append to bottom) --- */
+
+@media (max-width: 991px) { /* Bootstrap breakpoint */
+  .navbar-collapse {
+    /* Give the mobile menu a solid background */
+    background-color: rgba(0, 0, 0, 0.95); 
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+    border-bottom: 2px solid var(--neon-accent);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+  }
+
+  .nav-item {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  /* Make links bigger for touch */
+  .nav-link {
+    font-size: 1.2rem;
+    padding: 10px !important;
+  }
+  
+  /* Center the theme toggle */
+  .theme-toggle-button {
+    margin: 20px auto 0 auto;
+    display: block;
+  }
+}
