@@ -1,17 +1,17 @@
 // src/components/Hero.js (Refactored)
 
 import React from 'react';
+import '../styles/Hero.css';
 
 const Hero = () => {
   return (
-    // 'container' centers the content, 'pt-5' and 'mt-5' adds top padding/margin
-    <section id="about" className="hero-section container text-center pt-5 mt-5">
-      <div className="p-5 bg-light rounded-3 shadow-lg"> {/* Add Bootstrap background and shadow */}
-        <h2 className="display-6 text-secondary mt-5 pt-5">Hi, I'm Jane Doe.</h2>
-        <h1 className="display-3 fw-bold mb-4">A Full-Stack Developer & Problem Solver</h1>
+    <section id="about" className="hero-section text-center">
+      
+      <div className="container-md">
+        <h2 className="display-6 text-secondary">Hi, I'm Raziel Lloyd Sevilla.</h2>
+        <h1 className="display-3 fw-bold mb-4">A Computer Science Student</h1>
         <p className="lead mb-4">
-          I build modern, responsive web applications using React, Node.js, and MongoDB. 
-          I am passionate about clean code and excellent user experiences.
+          I build modern, responsive web applications using React, MySQL, and Bootstrap. I am passionate about clean code and excellent user experiences.
         </p>
         <div className="hero-actions my-4">
           {/* Use Bootstrap button classes */}
@@ -24,6 +24,7 @@ const Hero = () => {
           </a>
         </div>
       </div>
+      
     </section>
   );
 };
