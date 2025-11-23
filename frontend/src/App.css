@@ -2,18 +2,19 @@
 
 /* --- Theme Variables (Default/Light) --- */
 :root {
-  --background-color: #f8eaf8; /* Very light pink/violet */
-  --text-color: #3b003b; /* Deep Violet text */
-  --header-bg: #e2c0e2; /* Muted header */
-  --card-bg: #ffffff; /* White cards */
-  --accent-color: #ff69b4; /* Hot Pink */
+  --background-color: #f8eaf8; 
+  --text-color: #3b003b; 
+  --header-bg: #5b005b; 
+  --card-bg: #ffffff; 
+  --accent-color: #ff69b4;
+  --neon-accent: #00ffff; /* Cyan/Aqua */
 }
 
 /* --- Dark Theme Variables --- */
 body.dark-theme {
   --background-color: #3b003b; /* Deep Violet Background */
   --text-color: #ffffff; /* White Text */
-  --header-bg: #1a001a; /* Even Darker Header */
+  --header-bg: #1a001a;
   --card-bg: #5b005b; /* Dark Plum Cards */
   --accent-color: #ff69b4; /* Hot Pink Accent */
   

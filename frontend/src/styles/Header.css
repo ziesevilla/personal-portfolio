@@ -1,15 +1,73 @@
 /* src/styles/Header.css */
 
+/* --- HEADER CONTAINER --- */
 .main-header {
+  /* Use the dark header background color set in App.css */
+  background-color: var(--header-bg); 
+  color: var(--text-color);
   padding: 15px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: sticky; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  position: fixed; /* Use 'fixed' instead of 'sticky' with fixed-top class */
   top: 0;
+  width: 100%; /* Ensures it spans the full width when fixed */
   z-index: 1000;
-  background-color: var(--header-bg); /* Use variable */
-  color: var(--text-color); /* Use variable */
+  /* Optional: Add transparency, using rgba based on --header-bg: #1a001a or #5b005b */
+  background-color: rgba(26, 0, 26, 0.95); 
 }
 
+/* --- CLICKABLE CURSOR FIX --- */
+/* Apply the pointer cursor to all interactive navigation elements */
+.main-header .navbar-brand,
+.main-header .nav-link,
+.main-header .nav-item .nav-link,
+.main-header .nav-item button {
+    cursor: pointer !important; 
+}
+
+/* --- UNIFIED NAVBAR BRAND STYLING (The Fix) --- */
+.navbar-brand {
+    /* Font style is handled globally, but ensuring it's the correct color and glow */
+    color: var(--neon-accent) !important;
+    
+    /* UNIFIED GLOW: Apply subtle neon glow effect in both modes for consistency */
+    text-shadow: 0 0 5px var(--neon-accent); 
+    
+    font-size: 1.2em !important;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+/* --- NAVIGATION LINKS --- */
+
+/* Base style for all links inside the collapse menu */
+.nav-links a {
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 5px 10px;
+    transition: color 0.3s, text-shadow 0.3s, border-bottom 0.3s;
+}
+
+/* 💡 LIGHT MODE (Header background is dark) - Links are white */
+body:not(.dark-theme) .nav-link {
+    color: white !important; 
+}
+
+/* 💡 DARK MODE (Header background is dark) - Links are white */
+body.dark-theme .nav-link {
+    color: white !important;
+}
+
+/* 💡 ACTIVE/HOVER STYLING (Unified) */
+.nav-links a:hover,
+.nav-links .active { /* .active is applied by react-scroll */
+    color: var(--neon-accent) !important;
+    border-bottom: 2px solid var(--neon-accent);
+    
+    /* Apply neon glow on hover/active in both themes */
+    text-shadow: 0 0 5px var(--neon-accent); 
+}
+
+/* --- UTILITY CLASSES (Kept for reference, but mainly use Bootstrap classes in JSX) --- */
+/*
 .nav-bar {
   max-width: 1200px;
   margin: 0 auto;
@@ -18,22 +76,4 @@
   justify-content: space-between;
   align-items: center;
 }
-
-.nav-logo h1 {
-  font-size: 1.5em;
-  color: #61dafb; /* React blue */
-  margin: 0;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
-  padding: 5px 10px;
-  transition: color 0.3s, border-bottom 0.3s;
-}
-
-.nav-links a:hover {
-  color: #61dafb;
-  border-bottom: 2px solid #61dafb;
-}
+*/

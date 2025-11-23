@@ -1,31 +1,29 @@
-// src/components/ThemeToggle.js
+// src/components/ThemeToggle.js (Refactored for Minimalism)
 
 import React, { useState, useEffect } from 'react';
-import '../styles/ThemeToggle.css'; // We'll create this CSS file next
+import '../styles/ThemeToggle.css'; 
 
 const ThemeToggle = () => {
-  // 1. Get initial theme from local storage or default to 'light'
   const [theme, setTheme] = useState(
     localStorage.getItem('theme') || 'light'
   );
 
-  // Function to toggle the theme
   const toggleTheme = () => {
     setTheme(currentTheme => (currentTheme === 'light' ? 'dark' : 'light'));
   };
 
-  // 2. useEffect to apply the theme class to the <body> element
   useEffect(() => {
-    // Set the class on the body
     document.body.className = theme === 'dark' ? 'dark-theme' : 'light-theme';
-    
-    // Save the theme preference to local storage
     localStorage.setItem('theme', theme);
-  }, [theme]); // Rerun this effect whenever the 'theme' state changes
+  }, [theme]); 
 
   return (
-    <button onClick={toggleTheme} className="theme-toggle-button">
-      {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
+    <button onClick={toggleTheme} className="theme-toggle-button minimal-toggle">
+      {/* 💡 Icon Change: Use a Font Awesome icon based on the current theme */}
+      {theme === 'light' ? 
+        <i className="fas fa-moon"></i> : // Show moon icon in light mode
+        <i className="fas fa-sun"></i>    // Show sun icon in dark mode
+      }
     </button>
   );
 };

@@ -1,16 +1,36 @@
-/* src/styles/ThemeToggle.css */
+/* src/styles/ThemeToggle.css (Minimalist & Vaporwave Style) */
 
 .theme-toggle-button {
-  background: var(--accent-color);
-  color: var(--text-color);
+  /* Reset appearance */
+  background: transparent;
   border: none;
-  padding: 8px 15px;
-  border-radius: 20px;
+  
+  /* Size and shape for the icon button */
+  width: 40px; 
+  height: 40px;
+  padding: 0;
+  border-radius: 50%; /* Make it perfectly round */
+  
+  /* Ensure the icon color is the neon accent */
+  color: var(--neon-accent); 
+  font-size: 1.3em;
+  
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s, color 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
-.theme-toggle-button:hover {
-  opacity: 0.9;
+/* 💡 Neon Glow Effect for the Icon Button */
+.minimal-toggle {
+    box-shadow: 0 0 8px var(--neon-accent); /* Glow around the button */
+}
+
+.minimal-toggle:hover {
+    /* Slightly brighter glow on hover */
+    box-shadow: 0 0 15px var(--neon-accent); 
+    transform: scale(1.05);
+}
+
+/* Hide the background for the icon toggle in light mode if needed, though transparent is fine */
+body:not(.dark-theme) .minimal-toggle {
+    background: transparent;
 }
