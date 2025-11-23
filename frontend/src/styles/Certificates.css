@@ -1,50 +1,271 @@
 /* src/styles/Certificates.css */
 
 .certificates-section {
-  padding: 80px 20px;
-  /* Use theme variables for background and text */
-  background-color: var(--background-color); 
+  /* 💡 CONSTRAINT: Occupy exactly one full screen */
+  height: 100vh;
+  min-height: 600px; /* Prevent squishing on very small screens */
+  
+  background-color: var(--background-color);
   color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
+  
+  /* Vertically center the entire content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  position: relative;
+  overflow: hidden; /* Ensure nothing bleeds out */
 }
 
-/* Ensure the cards adapt to the theme */
-.certificates-section .card {
-  /* Override Bootstrap's card background */
-  background-color: var(--card-bg) !important; 
+.cert-content-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+/* --- TITLE --- */
+.section-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.8rem; /* Slightly smaller to save space */
   color: var(--text-color);
-  border: 1px solid var(--accent-color) !important; /* Emphasize border */
-  transition: background-color 0.3s, box-shadow 0.3s;
+  text-transform: uppercase;
+  margin-bottom: 0;
 }
 
-.certificates-section .card:hover {
-  /* Subtle lift effect on hover */
-  transform: translateY(-3px); 
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+.title-decoration {
+  color: var(--neon-accent);
+  text-shadow: 0 0 5px var(--neon-accent);
 }
 
-/* Adjust card footer for theme */
-.certificates-section .card-footer {
-  /* Light background for contrast, using variable */
-  background-color: var(--card-bg) !important; 
+/* --- SEARCH BAR --- */
+.search-container {
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
 }
 
-/* Adjust text color for all nested elements */
-.certificates-section h2, 
-.certificates-section h5, 
-.certificates-section h6,
-.certificates-section p,
-.certificates-section a {
-  color: var(--text-color) !important;
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--neon-accent);
 }
 
-/* Override Bootstrap button for theme compatibility */
-.certificates-section .btn-outline-primary {
-  color: var(--accent-color);
-  border-color: var(--accent-color);
+.cert-search-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--text-color);
+  padding: 8px 15px 8px 40px;
+  border-radius: 4px;
+  color: var(--text-color);
+  font-family: 'M PLUS 1p', sans-serif;
+  transition: all 0.3s;
 }
 
-.certificates-section .btn-outline-primary:hover {
-  background-color: var(--accent-color);
-  color: var(--header-bg); /* Dark text on accent hover */
+.cert-search-input:focus {
+  outline: none;
+  border-color: var(--neon-accent);
+  box-shadow: 0 0 10px var(--neon-accent);
+}
+
+/* --- 💡 CAROUSEL LAYOUT --- */
+
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.cert-carousel {
+  display: flex;
+  overflow-x: auto; /* Horizontal Scroll */
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory; /* Snap to cards */
+  gap: 20px;
+  padding: 20px 10px; /* Padding for hover effects */
+  width: 100%;
+  
+  /* Hide Scrollbar (Chrome/Safari/Opera) */
+  -webkit-overflow-scrolling: touch;
+}
+
+.cert-carousel::-webkit-scrollbar {
+  display: none; /* Hide for clean look */
+}
+
+/* Hide Scrollbar (IE/Edge/Firefox) */
+.cert-carousel {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+
+/* --- CAROUSEL BUTTONS --- */
+.carousel-btn {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--neon-accent);
+  color: var(--neon-accent);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.carousel-btn:hover {
+  background: var(--neon-accent);
+  color: var(--header-bg);
+  box-shadow: 0 0 15px var(--neon-accent);
+}
+
+/* --- CARD WRAPPER (For Snap Alignment) --- */
+.cert-card-wrapper {
+  flex: 0 0 auto; /* Don't shrink */
+  width: 280px; /* Fixed width for cards */
+  scroll-snap-align: center; /* Center card on snap */
+}
+
+/* --- CARD STYLING (Inventory Slot) --- */
+.cert-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(var(--text-color), 0.2);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  height: 300px; /* Fixed height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  padding: 20px;
+}
+
+/* Hover State */
+.cert-card:hover {
+  border-color: var(--neon-accent);
+  box-shadow: 0 0 15px rgba(var(--neon-accent), 0.3);
+  transform: translateY(-5px);
+}
+
+/* --- CARD CONTENT --- */
+.icon-box {
+  color: var(--accent-color); /* Vibrant Purple */
+  margin-bottom: 20px;
+  transition: transform 0.3s;
+}
+
+.cert-card:hover .icon-box {
+  transform: scale(1.1);
+  color: var(--neon-accent);
+  text-shadow: 0 0 10px var(--neon-accent);
+}
+
+.cert-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  color: var(--text-color);
+  
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cert-issuer-tag {
+  font-size: 0.75rem;
+  background: rgba(var(--text-color), 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+/* --- HOVER OVERLAY --- */
+.cert-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cert-card:hover .cert-overlay {
+  opacity: 1;
+}
+
+.overlay-content {
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+  text-align: center;
+  padding: 20px;
+}
+
+.cert-card:hover .overlay-content {
+  transform: translateY(0);
+}
+
+.cert-date {
+  color: white;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+  font-family: 'M PLUS 1p', monospace;
+}
+
+.btn-view-credential {
+  border: 1px solid var(--neon-accent);
+  color: var(--neon-accent);
+  background: transparent;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+}
+
+.btn-view-credential:hover {
+  background: var(--neon-accent);
+  color: var(--header-bg);
+  box-shadow: 0 0 10px var(--neon-accent);
+}
+
+/* --- DECORATIVE CORNERS --- */
+.corner-decor {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.cert-card:hover .top-left {
+  top: 5px;
+  left: 5px;
+  border-top-color: var(--neon-accent);
+  border-left-color: var(--neon-accent);
+}
+
+.cert-card:hover .bottom-right {
+  bottom: 5px;
+  right: 5px;
+  border-bottom-color: var(--neon-accent);
+  border-right-color: var(--neon-accent);
+}
+
+/* Dark Mode Tweaks */
+body.dark-theme .cert-card {
+  background: rgba(255, 255, 255, 0.03);
 }
