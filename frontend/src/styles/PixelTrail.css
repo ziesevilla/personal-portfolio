@@ -1,0 +1,19 @@
+/* src/styles/PixelTrail.css */
+
+.trail-pixel {
+    position: fixed; 
+    pointer-events: none; /* Crucial: ensures the trail doesn't interfere with clicks */
+    z-index: 9999; /* Ensure it stays above everything else */
+    
+    /* Pixelated Look */
+    width: 8px; 
+    height: 8px;
+    border-radius: 0; /* Keep it perfectly square */
+    
+    /* Vaporwave/Lofi Aesthetic */
+    background-color: var(--neon-accent); /* Uses your current theme's neon color */
+    box-shadow: 0 0 5px var(--neon-accent); /* Stronger glow effect */
+    
+    /* Improved Transition for smooth shrinking and fading */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
