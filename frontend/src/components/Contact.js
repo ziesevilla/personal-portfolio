@@ -1,42 +1,82 @@
 // src/components/Contact.js
 
-import React from 'react';
-import contactData from '../data/contactData'; // 💡 Import the new data file
+import React, { useState } from 'react';
+import contactData from '../data/contactData'; 
 import '../styles/Contact.css'; 
 
 const Contact = () => {
-  // Destructure the data for clean access
   const { email, message, socialLinks } = contactData;
+  const [copySuccess, setCopySuccess] = useState('');
+
+  // 💡 Function to copy email to clipboard
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopySuccess('Copied!');
+      // Reset message after 2 seconds
+      setTimeout(() => setCopySuccess(''), 2000);
+    } catch (err) {
+      setCopySuccess('Failed to copy');
+    }
+  };
 
   return (
-    // id="contact" allows the Header link to navigate here
-    <section id="contact" className="contact-section container py-5">
-      <h2 className="text-center display-4 mb-2">Get In Touch</h2>
-      <p className="text-center text-muted mb-4">
-        {message}
-      </p>
-      
-      <p className="contact-email mb-4">
-        Email me directly: <a href={`mailto:${email}`} className="fw-bold">{email}</a>
-      </p>
-      
-      <div className="social-links">
-        {/* Map over the socialLinks array */}
-        {socialLinks.map((link) => (
-            <a 
-                key={link.name} 
-                href={link.url} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-outline-dark mx-2"
-            >
-                {/* Use the Font Awesome icon class if you installed the library */}
-                {link.iconClass && <i className={`${link.iconClass} me-2`}></i>}
-                {link.name}
-            </a>
-        ))}
+    <section id="contact" className="contact-section container-fluid py-5">
+      <div className="container contact-wrapper">
+        
+        <h2 className="text-center display-4 mb-4 section-title">
+          <span className="title-decoration">{'>>>'}</span> Connect With Me <span className="title-decoration">{'>>>'}</span>
+        </h2>
+
+        {/* 💡 THE CYBER CARD */}
+        <div className="cyber-card">
+          
+          {/* Status Bar */}
+          <div className="card-status-bar">
+            <span className="status-dot pulsing"></span>
+            <span className="status-text">STATUS: AVAILABLE_FOR_HIRE</span>
+          </div>
+
+          <p className="text-center mb-4 card-message">
+            {message}
+          </p>
+          
+          {/* Email Copy Box */}
+          <div className="email-command-line" onClick={handleCopyEmail}>
+            <span className="prompt">{'>'}</span>
+            <span className="email-text">{email}</span>
+            <span className="copy-icon">
+              <i className="far fa-copy"></i>
+            </span>
+            
+            {/* Tooltip for copy feedback */}
+            <div className={`copy-feedback ${copySuccess ? 'show' : ''}`}>
+              {copySuccess}
+            </div>
+          </div>
+          
+          {/* Social Grid */}
+          <div className="social-grid mt-4">
+            {socialLinks.map((link) => (
+                <a 
+                    key={link.name} 
+                    href={link.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="social-btn"
+                >
+                    {link.iconClass && <i className={`${link.iconClass} social-icon`}></i>}
+                    <span>{link.name}</span>
+                </a>
+            ))}
+          </div>
+          
+          {/* Decorative Corner Elements */}
+          <div className="corner-decor top-left"></div>
+          <div className="corner-decor bottom-right"></div>
+        </div>
+
       </div>
-      
     </section>
   );
 };

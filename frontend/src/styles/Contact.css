@@ -1,54 +1,231 @@
 /* src/styles/Contact.css */
 
 .contact-section {
-  padding: 80px 20px;
-  /* 💡 Use the card background variable */
-  background-color: var(--card-bg); 
-  text-align: center;
-  transition: background-color 0.3s;
+  padding: 100px 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 90vh; /* Takes up most of the screen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-.contact-section h2 {
-  /* Use the text color variable */
-  color: var(--text-color); 
-  font-size: 2.5em;
-  margin-bottom: 10px;
+/* --- TITLE --- */
+.section-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.8rem;
+  color: var(--text-color);
+  text-transform: uppercase;
+  margin-bottom: 40px;
 }
 
-.social-links a {
-  /* Use the text color variable */
-  color: var(--text-color); 
-  text-decoration: none;
-  margin: 0 15px;
-  font-size: 1.1em;
-  border-bottom: 1px solid transparent;
-  transition: border-bottom 0.2s, color 0.3s;
+.title-decoration {
+  color: var(--neon-accent);
+  margin-right: 15px;
+  animation: blink 1s infinite;
 }
 
-.social-links a:hover {
-  /* Use the text color variable for border */
-  border-bottom: 1px solid var(--text-color); 
+@keyframes blink {
+  50% { opacity: 0; }
 }
 
-.contact-section .section-subtitle {
+/* --- CYBER CARD (Container) --- */
+.cyber-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px); /* Frosted Glass */
+  border: 1px solid rgba(var(--text-color), 0.2);
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cyber-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(var(--neon-accent), 0.2);
+  border-color: var(--neon-accent);
+}
+
+/* --- STATUS BAR --- */
+.card-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 30px;
-  max-width: 600px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  border-radius: 20px;
+  width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid rgba(var(--neon-accent), 0.3);
 }
 
-.contact-email a {
-  font-size: 1.2em;
-  color: #61dafb;
-  text-decoration: none;
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #00ff00; /* Standard Green for "Online" */
+  border-radius: 50%;
+  margin-right: 10px;
+  box-shadow: 0 0 5px #00ff00;
+}
+
+.pulsing {
+  animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 255, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
+}
+
+.status-text {
+  font-family: 'M PLUS 1p', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
   font-weight: bold;
-  transition: color 0.2s;
+  color: var(--text-color);
 }
 
-.contact-email a:hover {
-  color: #38a1c3;
+.card-message {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  opacity: 0.9;
 }
 
-.social-links {
-  margin-top: 30px;
+/* --- EMAIL COMMAND LINE --- */
+.email-command-line {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--text-color);
+  padding: 15px 20px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'M PLUS 1p', monospace;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+  margin-bottom: 40px;
+}
+
+.email-command-line:hover {
+  border-color: var(--neon-accent);
+  box-shadow: 0 0 10px var(--neon-accent);
+}
+
+.prompt {
+  color: var(--neon-accent);
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.email-text {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  flex-grow: 1; /* Pushes icon to right */
+  text-align: left;
+}
+
+.copy-icon {
+  color: var(--text-color);
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.email-command-line:hover .copy-icon {
+  opacity: 1;
+  color: var(--neon-accent);
+}
+
+/* Copy Feedback Tooltip */
+.copy-feedback {
+  position: absolute;
+  top: -35px;
+  right: 10px;
+  background: var(--neon-accent);
+  color: var(--header-bg);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.copy-feedback.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- SOCIAL GRID --- */
+.social-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  padding: 10px 25px;
+  border-radius: 30px; /* Pill shape */
+  transition: all 0.3s;
+  font-weight: bold;
+}
+
+.social-btn:hover {
+  border-color: var(--neon-accent);
+  color: var(--header-bg); /* Dark text */
+  background: var(--neon-accent); /* Neon fill */
+  box-shadow: 0 0 15px var(--neon-accent);
+  transform: translateY(-3px);
+}
+
+.social-icon {
+  font-size: 1.2rem;
+}
+
+/* --- CORNER DECOR --- */
+.corner-decor {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.cyber-card:hover .top-left {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--neon-accent);
+  border-left: 2px solid var(--neon-accent);
+  border-top-left-radius: 12px;
+}
+
+.cyber-card:hover .bottom-right {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--neon-accent);
+  border-right: 2px solid var(--neon-accent);
+  border-bottom-right-radius: 12px;
+}
+
+/* Dark Mode Specifics */
+body.dark-theme .cyber-card {
+  background: rgba(0, 0, 0, 0.4); /* Darker glass in dark mode */
 }
