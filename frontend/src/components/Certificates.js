@@ -43,7 +43,7 @@ const Certificates = () => {
         
         <div className="text-center mb-4">
           <h2 className="display-4 section-title">
-            <span className="title-decoration">#</span> Achievements
+            <span className="title-decoration">#</span> Certificates <span className="title-decoration">#</span>
           </h2>
           <p className="text-muted">
             Unlocked Credentials ({certificateData.length})
