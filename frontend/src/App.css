@@ -6,8 +6,8 @@
   --text-color: #3b003b; 
   --header-bg: #5b005b; 
   --card-bg: #ffffff; 
-  --accent-color: #ff69b4;
-  --neon-accent: #00ffff; /* Cyan/Aqua */
+  --accent-color: #8A2BE2;
+  --neon-accent: #5252d4; /* Cyan/Aqua */
 }
 
 /* --- Dark Theme Variables --- */
@@ -16,7 +16,7 @@ body.dark-theme {
   --text-color: #ffffff; /* White Text */
   --header-bg: #1a001a;
   --card-bg: #5b005b; /* Dark Plum Cards */
-  --accent-color: #ff69b4; /* Hot Pink Accent */
+  --accent-color: #8A2BE2; /* Hot Pink Accent */
   
   /* Additional Neon Accent for strong emphasis (e.g., in a hover state) */
   --neon-accent: #00ffff; /* Cyan/Aqua */
@@ -75,4 +75,8 @@ h1, h2, h3, h4, p, a {
     background-color: var(--neon-accent) !important;
     border-color: var(--neon-accent) !important;
     box-shadow: 0 0 10px var(--neon-accent) !important; /* Glow effect! */
+}
+
+.btn-outline-dark {
+    background-color: transparent !important;
 }

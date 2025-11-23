@@ -1,65 +1,129 @@
 /* src/styles/Hero.css */
 
 .hero-section {
-  padding: 100px 20px;
-  background-color: var(--card-bg); 
-  text-align: center;
-  border-radius: 8px;
-  margin: 40px auto; 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  color: var(--text-color); 
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  /* 💡 IMPROVEMENT: Apply the animated gradient */
+  background: linear-gradient(
+      135deg, 
+      var(--background-color), 
+      var(--card-bg), 
+      var(--background-color)
+  );
+  background-size: 400% 400%; /* Makes the gradient huge */
+  animation: gradient-shift 30s ease infinite; /* Slow, infinite animation */
+  
+  /* Setup for scanline overlay */
+  position: relative; 
+  overflow: hidden;
+
+
+  /* 💡 IMPROVEMENT: Set to full viewport height and center content */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
+  /* Reset margin/padding for full bleed effect */
+  padding: 0 20px;
+  margin: 0 auto; 
+
+  /* Use main background color from theme */
+  background-color: var(--background-color); 
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* 💡 IMPROVEMENT: Scanline Overlay Effect (Vaporwave Aesthetic) */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Subtle dark horizontal lines */
+    background: repeating-linear-gradient(
+        transparent 0,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 2px
+    );
+    pointer-events: none; 
+    opacity: 0.6;
+}
+
+/* --- TEXT STYLING --- */
+
+.hero-section h1 {
+  /* 💡 IMPROVEMENT: Increase size slightly for impact */
+  font-size: 4em;
+  margin-bottom: 25px;
 }
 
 .hero-section h2 {
-  font-size: 1.5em;
-  /* Use the text color variable for consistency */
-  color: var(--text-color); 
-  margin-bottom: 10px;
-}
-
-.hero-section h1 {
-  font-size: 3.5em;
-  margin-bottom: 20px;
+    /* Use neon accent color for high contrast */
+    color: var(--text-color) !important;
+    font-size: 1.8em;
+    margin-bottom: 15px;
 }
 
 .hero-section p {
-  font-size: 1.2em;
-  max-width: 700px;
-  margin: 0 auto 30px auto;
-  /* Use the text color variable */
-  color: var(--text-color);
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    color: var(--text-color);
+    /* 💡 IMPROVEMENT: Subtle glow for main paragraph */
+    text-shadow: 0 0 1px var(--text-color);
 }
 
-.btn {
-  display: inline-block;
-  padding: 12px 25px;
-  margin: 0 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+/* --- SECONDARY BUTTON STYLING (Neon Outline) --- */
 
 .secondary-btn {
-  background-color: transparent;
-  color: var(--text-color); 
-  border: 1px solid var(--text-color);
+    /* 💡 CORE FIX: Set background to transparent in all modes */
+    background-color: transparent !important; 
+    
+    /* Ensure the border and text are the Neon color */
+    color: var(--neon-accent) !important;
+    border: 2px solid var(--neon-accent) !important;
+    
+    /* Initial subtle neon glow */
+    box-shadow: 0 0 5px var(--neon-accent); 
+    
+    /* Retain square look and transition */
+    border-radius: 0; 
+    transition: all 0.3s ease-in-out;
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.secondary-btn:hover {
+    /* Full neon sign effect on hover */
+    background-color: var(--neon-accent) !important;
+    
+    /* 💡 CORE FIX: Ensure text is the dark header color when button is filled */
+    color: var(--header-bg) !important; 
+    
+    box-shadow: 0 0 15px var(--neon-accent);
+    transform: translateY(-2px);
 }
 
+/* src/styles/Hero.css (Additions for Pulsing Glow Button) */
 
-.primary-btn {
-  background-color: transparent;
-  /* Use text color for border and text */
-  color: var(--text-color); 
-  border: 1px solid var(--text-color); 
+/* 💡 New Keyframes for Pulsing Glow */
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px var(--accent-color); }
+    50% { box-shadow: 0 0 20px var(--accent-color), 0 0 5px var(--accent-color); }
+    100% { box-shadow: 0 0 10px var(--accent-color); }
+}
+
+/* Apply pulse animation to the Primary Button */
+.pulsing-glow {
+    animation: pulse 2s infinite alternate; /* Slow, repeating pulse */
+}
+
+/* Ensure icons and text inside buttons use the correct color */
+.btn i, .btn {
+    /* Ensure icon color adapts to the button's primary color or its hover color */
+    color: inherit; 
+}
+
+/* Reset border-radius to 0 on primary button for retro feel */
+.btn-primary {
+    border-radius: 0 !important;
 }
